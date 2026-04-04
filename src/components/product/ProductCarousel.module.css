@@ -1,0 +1,81 @@
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: var(--space-xl) 0;
+}
+
+.scrollArea {
+  display: flex;
+  gap: var(--space-lg);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-md); /* Espacio para sombras */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  flex: 1;
+}
+
+.scrollArea::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.cardWrapper {
+  /* Aproximadamente 5 columnas */
+  flex: 0 0 clamp(220px, 20vw, 280px);
+  scroll-snap-align: start;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(36, 29, 53, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-md);
+}
+
+.navButton:hover {
+  background: var(--color-background);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.leftButton {
+  left: -24px;
+}
+
+.rightButton {
+  right: -24px;
+}
+
+@media (max-width: 1024px) {
+  .leftButton {
+    left: 10px;
+  }
+  .rightButton {
+    right: 10px;
+  }
+  .cardWrapper {
+    flex: 0 0 clamp(200px, 30vw, 250px);
+  }
+}
+
+@media (max-width: 600px) {
+  .cardWrapper {
+    flex: 0 0 100%;
+  }
+}

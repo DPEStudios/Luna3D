@@ -1,0 +1,41 @@
+/* src/styles/tokens.css */
+:root {
+  /* Brand Colors - LUNA 3D Vibe */
+  --color-primary: #8A4BFF; /* Morado vibrante (LUNA) */
+  --color-primary-hover: #7339E5;
+  --color-accent: #E08DF8; /* Rosado pastel/Lila (3D) */
+  --color-accent-hover: #CF7CE8;
+  
+  /* Twillight Night Palette */
+  --color-background: #191424; /* Crepúsculo profundo, no negro puro */
+  --color-surface: #241D35; /* Superficies ligeramente elevadas */
+  --color-text-primary: #F4EFFF; /* Blanco violeta */
+  --color-text-secondary: #ADA5C1; /* Gris violeta para textos secundarios */
+  
+  /* Borders */
+  --color-border: #3C3155;
+  --color-border-hover: #504172;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Elevation/Shadows (Dark Mode Adjusted) */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.4), 0 2px 6px -2px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(138, 75, 255, 0.25);
+}

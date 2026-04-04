@@ -1,0 +1,19 @@
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-xl);
+  padding: var(--space-xl) 0;
+}
+
+@media (max-width: 1024px) {
+  .catalog {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .catalog {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+}
