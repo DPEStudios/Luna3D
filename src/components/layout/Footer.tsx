@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { APP_VERSION } from '../../lib/changelog';
 import styles from './Footer.module.css';
 
 export const Footer: React.FC = () => {
@@ -68,7 +69,7 @@ export const Footer: React.FC = () => {
           &copy; {new Date().getFullYear()} Estrella 3D SpA. Todos los derechos reservados.
         </div>
         <Link href="/changelog" className={styles.versionBadge}>
-          v1.1.0 - Últimas actualizaciones 🚀
+          v{APP_VERSION} — Ver actualizaciones
         </Link>
       </div>
     </footer>

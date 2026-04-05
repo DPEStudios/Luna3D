@@ -267,3 +267,22 @@
   color: var(--color-text-secondary);
   text-align: center;
 }
+
+/* ── Errores de validación ── */
+
+.formError {
+  padding: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-md);
+  border-radius: var(--radius-sm);
+  background-color: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  font-size: 0.875rem;
+}
+
+.fieldError {
+  display: block;
+  margin-top: var(--space-xs);
+  font-size: 0.75rem;
+  color: #fca5a5;
+}

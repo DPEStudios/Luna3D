@@ -70,11 +70,11 @@
 }
 
 .favoriteActive {
-  color: #ff3b30;
+  color: var(--color-danger);
 }
 
 .favoriteActive:hover {
-  color: #ff3b30;
+  color: var(--color-danger);
 }
 
 .imageLink {

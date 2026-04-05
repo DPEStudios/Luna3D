@@ -7,6 +7,7 @@ import { CategoryMenu } from './CategoryMenu';
 import { useCartStore } from '../../store/cartStore';
 import { useAuthStore } from '../../store/authStore';
 import { AuthModal } from '../auth/AuthModal';
+import { APP_VERSION } from '../../lib/changelog';
 
 export const Header: React.FC = () => {
   const { items, openCart } = useCartStore();
@@ -24,7 +25,7 @@ export const Header: React.FC = () => {
       <div className={styles.leftSection}>
         <Link href="/" className={styles.logo}>
           LUNA<span>3D</span>
-          <span className={styles.versionBadge}>v1.1.0</span>
+          <span className={styles.versionBadge}>v{APP_VERSION}</span>
         </Link>
         <CategoryMenu />
       </div>

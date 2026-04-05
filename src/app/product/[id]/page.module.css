@@ -243,13 +243,13 @@
 }
 
 .favoriteBtnLg:hover {
-  border-color: #ff3b30;
-  color: #ff3b30;
+  border-color: var(--color-danger);
+  color: var(--color-danger);
 }
 
 .favoriteActiveLg {
-  color: #ff3b30;
-  border-color: #ff3b30;
+  color: var(--color-danger);
+  border-color: var(--color-danger);
 }
 
 .secureCheckout {
