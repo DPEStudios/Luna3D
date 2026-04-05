@@ -11,6 +11,7 @@ export interface CartItem {
 
 interface CartState {
   items: CartItem[];
+  favorites: string[]; // List of product IDs
   isOpen: boolean;
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
@@ -19,12 +20,14 @@ interface CartState {
   toggleCart: () => void;
   openCart: () => void;
   closeCart: () => void;
+  toggleFavorite: (id: string) => void;
 }
 
 export const useCartStore = create<CartState>()(
   persist(
     (set) => ({
       items: [],
+      favorites: [],
       isOpen: false,
 
       addItem: (newItem) => set((state) => {
@@ -54,11 +57,20 @@ export const useCartStore = create<CartState>()(
       toggleCart: () => set((state) => ({ isOpen: !state.isOpen })),
       openCart: () => set({ isOpen: true }),
       closeCart: () => set({ isOpen: false }),
+
+      toggleFavorite: (id) => set((state) => {
+        const isFavorite = state.favorites.includes(id);
+        return {
+          favorites: isFavorite
+            ? state.favorites.filter((favId) => favId !== id)
+            : [...state.favorites, id]
+        };
+      }),
     }),
     {
       name: 'luna3d-cart-storage',
-      // Persistimos sólo los items, la visibilidad (isOpen) no se guarda entre sesiones
-      partialize: (state) => ({ items: state.items }), 
+      // Persistimos los items y favoritos, la visibilidad no se guarda
+      partialize: (state) => ({ items: state.items, favorites: state.favorites }), 
     }
   )
 );

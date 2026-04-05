@@ -34,7 +34,7 @@
 .badge {
   position: absolute;
   top: var(--space-sm);
-  right: var(--space-sm);
+  left: var(--space-sm);
   background-color: var(--color-primary);
   color: var(--color-surface);
   font-size: 0.75rem;
@@ -43,6 +43,44 @@
   border-radius: var(--radius-full);
   z-index: 10;
   box-shadow: var(--shadow-sm);
+}
+
+.favoriteBtn {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: var(--color-surface);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-short);
+}
+
+.favoriteBtn:hover {
+  transform: scale(1.1);
+  color: var(--color-primary);
+}
+
+.favoriteActive {
+  color: #ff3b30;
+}
+
+.favoriteActive:hover {
+  color: #ff3b30;
+}
+
+.imageLink {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .content {
@@ -61,16 +99,24 @@
   font-weight: 600;
 }
 
-.title {
+.titleLink {
+  text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
   color: var(--color-text-primary);
   line-height: 1.4;
-  /* Elipsis para textos largos */
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.title {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
 }
 
 .footer {

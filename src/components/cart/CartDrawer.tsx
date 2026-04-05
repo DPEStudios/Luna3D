@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './CartDrawer.module.css';
+import Link from 'next/link';
 import { useCartStore } from '../../store/cartStore';
 import { Button } from '../ui/Button';
 
@@ -88,9 +89,11 @@ export const CartDrawer: React.FC = () => {
               <span className={styles.totalPrice}>{formatPrice(total)}</span>
             </div>
             <p className={styles.taxNotice}>Impuestos calculados en el checkout</p>
-            <Button variant="primary" className={styles.checkoutBtn} style={{width: '100%'}}>
-              Ir a Pagar
-            </Button>
+            <Link href="/checkout" onClick={closeCart} style={{textDecoration: 'none', width: '100%'}}>
+              <Button variant="primary" className={styles.checkoutBtn} style={{width: '100%'}}>
+                Ir a Pagar
+              </Button>
+            </Link>
           </div>
         )}
       </aside>

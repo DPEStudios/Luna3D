@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from './Footer.module.css';
 
 export const Footer: React.FC = () => {
@@ -54,7 +55,12 @@ export const Footer: React.FC = () => {
       </div>
 
       <div className={styles.bottomBar}>
-        &copy; {new Date().getFullYear()} Estrella 3D SpA. Todos los derechos reservados.
+        <div className={styles.copyright}>
+          &copy; {new Date().getFullYear()} Estrella 3D SpA. Todos los derechos reservados.
+        </div>
+        <Link href="/changelog" className={styles.versionBadge}>
+          v1.1.0 - Últimas actualizaciones 🚀
+        </Link>
       </div>
     </footer>
   );
