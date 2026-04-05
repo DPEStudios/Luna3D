@@ -1,9 +1,48 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { APP_VERSION } from '../../lib/changelog';
 import styles from './Footer.module.css';
 
 export const Footer: React.FC = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
+
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatusMessage("");
+
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      nombre: formData.get("Nombre"),
+      correo: formData.get("Correo"),
+      mensaje: formData.get("Mensaje"),
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        setStatusMessage("¡Mensaje enviado con éxito!");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setStatusMessage("Ocurrió un error. Intenta nuevamente.");
+      }
+    } catch (error) {
+      setStatusMessage("Error de conexión al enviar el mensaje.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
@@ -54,11 +93,14 @@ export const Footer: React.FC = () => {
         {/* Formulario */}
         <div className={styles.column}>
           <h3>Contáctanos</h3>
-          <form action="mailto:contacto@luna3d.cl" method="POST" encType="text/plain" className={styles.form}>
+          <form onSubmit={handleContactSubmit} className={styles.form}>
             <input type="text" name="Nombre" placeholder="Tu Nombre" className={styles.input} required />
             <input type="email" name="Correo" placeholder="Tu Email" className={styles.input} required />
             <textarea name="Mensaje" placeholder="Mensaje" rows={3} className={styles.input} required />
-            <button type="submit" className={styles.button}>Enviar a contacto@luna3d.cl</button>
+            <button type="submit" disabled={isSubmitting} className={styles.button}>
+              {isSubmitting ? 'Enviando...' : 'Enviar a contacto@luna3d.cl'}
+            </button>
+            {statusMessage && <p style={{ fontSize: '0.9rem', color: statusMessage.includes('éxito') ? '#4caf50' : '#f44336' }}>{statusMessage}</p>}
           </form>
         </div>
 

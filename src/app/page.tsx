@@ -1,17 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
-import { Header } from "../components/layout/Header";
 import { ProductCarousel } from "../components/product/ProductCarousel";
 import { products } from "../lib/mockData";
 import { Button } from "../components/ui/Button";
-import { Footer } from "../components/layout/Footer";
 
 export default function Home() {
   return (
-    <div className={styles.main}>
-      <Header />
-      
+    <div className={styles.main}>      
       {/* HERO SECTION */}
       <section className={styles.hero}>
         <div className={styles.heroBackground}>
@@ -69,8 +65,6 @@ export default function Home() {
 
       </main>
 
-      {/* FOOTER */}
-      <Footer />
-    </div>
+      {/* FOOTER */}    </div>
   );
 }

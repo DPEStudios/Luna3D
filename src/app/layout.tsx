@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "../styles/tokens.css";
 import "./globals.css";
 import { CartDrawer } from "../components/cart/CartDrawer";
+import { Header } from "../components/layout/Header";
+import { Footer } from "../components/layout/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +21,11 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={inter.className}>
-        {children}
+        <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          <Header />
+          {children}
+          <Footer />
+        </div>
         <CartDrawer />
       </body>
     </html>

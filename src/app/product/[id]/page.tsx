@@ -2,8 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { products } from '../../../lib/mockData';
-import { Header } from '../../../components/layout/Header';
-import { Footer } from '../../../components/layout/Footer';
 import ProductDetailClient from './ProductDetailClient';
 import styles from './page.module.css';
 
@@ -25,9 +23,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }).format(product.price);
 
   return (
-    <div className={styles.main}>
-      <Header />
-      
+    <div className={styles.main}>      
       <main className={styles.container}>
         <div className={styles.productGrid}>
           {/* Left Column - Image Gallery */}
@@ -112,9 +108,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
           </div>
         </div>
-      </main>
-
-      <Footer />
-    </div>
+      </main>    </div>
   );
 }

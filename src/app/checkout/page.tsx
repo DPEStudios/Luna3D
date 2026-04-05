@@ -6,8 +6,6 @@ import { useCartStore } from '../../store/cartStore';
 import { customerSchema, facturaSchema } from '../../lib/validation';
 import { publicEnv } from '../../lib/env';
 import { Button } from '../../components/ui/Button';
-import { Header } from '../../components/layout/Header';
-import { Footer } from '../../components/layout/Footer';
 import styles from './page.module.css';
 
 type FieldErrors = Record<string, string>;
@@ -117,24 +115,18 @@ export default function CheckoutPage() {
 
   if (items.length === 0) {
     return (
-      <div className={styles.main}>
-        <Header />
-        <main className={styles.emptyContainer}>
+      <div className={styles.main}>        <main className={styles.emptyContainer}>
           <h2>Tu carrito está vacío</h2>
           <p>Agrega modelos 3D antes de ir a pagar.</p>
           <Link href="/">
             <Button>Volver al catálogo</Button>
           </Link>
-        </main>
-        <Footer />
-      </div>
+        </main>      </div>
     );
   }
 
   return (
-    <div className={styles.main}>
-      <Header />
-      
+    <div className={styles.main}>      
       <main className={styles.container}>
         <div className={styles.header}>
           <Link href="/">&larr; Volver</Link>
@@ -288,9 +280,6 @@ export default function CheckoutPage() {
             </p>
           </aside>
         </div>
-      </main>
-
-      <Footer />
-    </div>
+      </main>    </div>
   );
 }

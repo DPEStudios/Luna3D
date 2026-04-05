@@ -1,14 +1,13 @@
 "use client";
+import { Suspense } from "react";
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { publicEnv } from "../../../lib/env";
-import { Header } from "../../../components/layout/Header";
-import { Footer } from "../../../components/layout/Footer";
 import { Button } from "../../../components/ui/Button";
 import styles from "../payment-result.module.css";
 
-export default function PaymentFailurePage() {
+function PaymentFailurePageContent() {
   const searchParams = useSearchParams();
   const orderId = searchParams.get("external_reference") ?? "";
 
@@ -17,9 +16,7 @@ export default function PaymentFailurePage() {
   );
 
   return (
-    <div className={styles.main}>
-      <Header />
-      <main className={styles.container}>
+    <div className={styles.main}>      <main className={styles.container}>
         <div className={`${styles.card} ${styles.failureBorder}`}>
           <div className={styles.icon}>&#10007;</div>
           <h1 className={styles.title}>Pago No Procesado</h1>
@@ -47,8 +44,14 @@ export default function PaymentFailurePage() {
             </a>
           </div>
         </div>
-      </main>
-      <Footer />
-    </div>
+      </main>    </div>
+  );
+}
+
+export default function PaymentFailurePage() {
+  return (
+    <Suspense fallback={<div>Cargando...</div>}>
+      <PaymentFailurePageContent />
+    </Suspense>
   );
 }

@@ -1,16 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useCartStore } from "../../../store/cartStore";
 import { publicEnv } from "../../../lib/env";
-import { Header } from "../../../components/layout/Header";
-import { Footer } from "../../../components/layout/Footer";
 import { Button } from "../../../components/ui/Button";
 import styles from "../payment-result.module.css";
 
-export default function PaymentPendingPage() {
+function PaymentPendingPageContent() {
   const searchParams = useSearchParams();
   const clearCart = useCartStore((state) => state.clearCart);
 
@@ -26,9 +24,7 @@ export default function PaymentPendingPage() {
   );
 
   return (
-    <div className={styles.main}>
-      <Header />
-      <main className={styles.container}>
+    <div className={styles.main}>      <main className={styles.container}>
         <div className={`${styles.card} ${styles.pendingBorder}`}>
           <div className={styles.icon}>&#8987;</div>
           <h1 className={styles.title}>Pago Pendiente</h1>
@@ -56,8 +52,14 @@ export default function PaymentPendingPage() {
             </a>
           </div>
         </div>
-      </main>
-      <Footer />
-    </div>
+      </main>    </div>
+  );
+}
+
+export default function PaymentPendingPage() {
+  return (
+    <Suspense fallback={<div>Cargando...</div>}>
+      <PaymentPendingPageContent />
+    </Suspense>
   );
 }

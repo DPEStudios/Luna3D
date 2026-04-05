@@ -1,7 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { Header } from '../../components/layout/Header';
-import { Footer } from '../../components/layout/Footer';
 import { versionHistory } from '../../lib/changelog';
 import styles from './page.module.css';
 
@@ -9,9 +7,7 @@ export default function ChangelogPage() {
   const versions = versionHistory;
 
   return (
-    <div className={styles.main}>
-      <Header />
-      
+    <div className={styles.main}>      
       <main className={styles.container}>
         <div className={styles.header}>
           <Link href="/">&larr; Volver al inicio</Link>
@@ -41,9 +37,6 @@ export default function ChangelogPage() {
             </div>
           ))}
         </div>
-      </main>
-
-      <Footer />
-    </div>
+      </main>    </div>
   );
 }
