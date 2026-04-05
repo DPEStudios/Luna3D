@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './CategoryMenu.module.css';
 
 // Inventario simulado ampliado
@@ -32,7 +33,8 @@ const imgPool = [
 const generateMockProducts = (category: string, subcategory: string | null) => {
   const count = subcategory ? 8 : 18; 
   return Array.from({ length: count }).map((_, i) => ({
-    id: `${category}-${subcategory || 'all'}-${i}`,
+    // Use a real valid ID (p1 to p16) so the PDP doesn't 404.
+    id: `p${(i % 16) + 1}`,
     title: subcategory ? `Item ${subcategory} ${i+1}` : `Item Genérico ${i+1}`,
     image: imgPool[Math.floor(Math.random() * imgPool.length)]
   }));
@@ -92,13 +94,15 @@ export const CategoryMenu: React.FC = () => {
             Mostrando: {activeSub ? `${activeCategory} > ${activeSub}` : `Todo en ${activeCategory}`}
           </h3>
           <div className={`${styles.productsGrid} ${styles.fadeContainer}`} key={`prod-${activeCategory}-${activeSub}`}>
-            {products.map((prod) => (
-              <div key={prod.id} className={styles.productBox}>
-                <div className={styles.imgWrapper}>
-                  <Image src={prod.image!} alt={prod.title} fill className={styles.menuImg} sizes="100px" />
+            {products.map((prod, idx) => (
+              <Link href={`/product/${prod.id}`} key={`${prod.id}-${idx}`} style={{textDecoration: 'none'}}>
+                <div className={styles.productBox}>
+                  <div className={styles.imgWrapper}>
+                    <Image src={prod.image!} alt={prod.title} fill className={styles.menuImg} sizes="100px" />
+                  </div>
+                  <span className={styles.productBoxTitle}>{prod.title}</span>
                 </div>
-                <span className={styles.productBoxTitle}>{prod.title}</span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

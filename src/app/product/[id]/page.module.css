@@ -58,6 +58,31 @@
   z-index: 10;
 }
 
+.thumbnails {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.thumbnailWrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--transition-short);
+}
+
+.thumbnailActive {
+  border-color: var(--color-primary);
+}
+
+.thumbnailImage {
+  object-fit: cover;
+}
+
 /* Right Column Info */
 .infoColumn {
   display: flex;

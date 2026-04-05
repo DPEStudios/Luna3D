@@ -5,9 +5,12 @@ import Link from 'next/link';
 import styles from './Header.module.css';
 import { CategoryMenu } from './CategoryMenu';
 import { useCartStore } from '../../store/cartStore';
+import { useAuthStore } from '../../store/authStore';
+import { AuthModal } from '../auth/AuthModal';
 
 export const Header: React.FC = () => {
   const { items, openCart } = useCartStore();
+  const { isAuthenticated, user, openAuthModal, logout } = useAuthStore();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -21,7 +24,7 @@ export const Header: React.FC = () => {
       <div className={styles.leftSection}>
         <Link href="/" className={styles.logo}>
           LUNA<span>3D</span>
-          <span className={styles.versionBadge}>v1.2</span>
+          <span className={styles.versionBadge}>v1.1.0</span>
         </Link>
         <CategoryMenu />
       </div>
@@ -36,9 +39,16 @@ export const Header: React.FC = () => {
       </div>
 
       <div className={styles.rightSection}>
-        <button className={styles.iconButton}>
-          <span className={styles.loginText}>Ingresar</span>
-        </button>
+        {mounted && isAuthenticated ? (
+          <div className={styles.userMenu}>
+            <span className={styles.loginText}>Hola, {user?.name.split(' ')[0]}</span>
+            <button className={styles.logoutBtn} onClick={logout}>Salir</button>
+          </div>
+        ) : (
+          <button className={styles.iconButton} onClick={openAuthModal}>
+            <span className={styles.loginText}>Ingresar</span>
+          </button>
+        )}
         <button className={styles.iconButton} onClick={openCart}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -48,6 +58,7 @@ export const Header: React.FC = () => {
           )}
         </button>
       </div>
+      <AuthModal />
     </header>
   );
 };
