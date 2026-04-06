@@ -1,9 +1,13 @@
 import React from 'react';
 import styles from './ProductCatalog.module.css';
 import { ProductCard } from './ProductCard';
-import { products } from '../../lib/mockData';
+import { Product } from '../../lib/db/productService';
 
-export const ProductCatalog: React.FC = () => {
+interface ProductCatalogProps {
+  products: Product[];
+}
+
+export const ProductCatalog: React.FC<ProductCatalogProps> = ({ products }) => {
   return (
     <section className={styles.catalog}>
       {products.map((product) => (

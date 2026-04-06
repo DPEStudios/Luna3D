@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { products } from '../../../lib/mockData';
+import { getProductById } from '../../../lib/db/productService';
 import ProductDetailClient from './ProductDetailClient';
 import styles from './page.module.css';
 
@@ -11,7 +11,7 @@ interface ProductPageProps {
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const resolvedParams = await params;
-  const product = products.find(p => p.id === resolvedParams.id);
+  const product = await getProductById(resolvedParams.id);
 
   if (!product) {
     notFound();

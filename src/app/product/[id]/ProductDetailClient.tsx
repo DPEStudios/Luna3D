@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useCartStore } from '../../../store/cartStore';
-import { Product } from '../../../lib/mockData';
+import { Product } from '../../../lib/db/productService';
 import { Button } from '../../../components/ui/Button';
 import styles from './page.module.css';
 

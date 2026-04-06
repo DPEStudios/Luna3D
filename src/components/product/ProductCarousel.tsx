@@ -3,7 +3,7 @@
 import React, { useRef } from 'react';
 import styles from './ProductCarousel.module.css';
 import { ProductCard } from './ProductCard';
-import { Product } from '../../lib/mockData';
+import { Product } from '../../lib/db/productService';
 
 interface ProductCarouselProps {
   products: Product[];
