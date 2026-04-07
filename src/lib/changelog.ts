@@ -3,7 +3,7 @@
    Header, Footer y la página /changelog leen de aquí.
    ────────────────────────────────────────────── */
 
-export const APP_VERSION = "1.2.0";
+export const APP_VERSION = "1.3.0";
 
 export interface VersionEntry {
   version: string;
@@ -13,6 +13,18 @@ export interface VersionEntry {
 }
 
 export const versionHistory: VersionEntry[] = [
+  {
+    version: "1.3.0",
+    date: "7 de Abril de 2026",
+    title: "Interactividad, Conversión y UX Premium",
+    changes: [
+      "Sistema de notificaciones no intrusivo: Al añadir al carrito, ahora aparece un 'Toast' inteligente en lugar de taparte la pantalla completa con el cajón del carrito.",
+      "Componente de Prueba Social: Nueva sección al final del detalle de los productos lista para recibir reseñas y valoraciones, empujando la conversión de compra.",
+      "Checkout Ultra Moderno: Despedimos a los aburridos círculos de selección de Boleta/Factura. ¡Ahora usamos increíbles tarjetas interactuables, al estilo de MercadoPago!",
+      "Limpieza Técnica Avanzada: El código se liberó de tipados inseguros que alertaba el compilador en los sistemas de Checkout y Autenticación.",
+      "Reparada la visualización de las páginas de Acuerdos y Políticas a nivel de producción en la nube."
+    ],
+  },
   {
     version: "1.2.0",
     date: "5 de Abril de 2026",
