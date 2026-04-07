@@ -52,8 +52,14 @@ export const CartDrawer: React.FC = () => {
         <div className={styles.body}>
           {items.length === 0 ? (
             <div className={styles.emptyState}>
-              <p>Tu carrito está vacío</p>
-              <Button onClick={closeCart} variant="ghost">Explorar modelos</Button>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{opacity: 0.5, marginBottom: '8px'}}>
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <p style={{fontSize: '1.2rem', fontWeight: 600, color: 'var(--color-text-primary)'}}>Comienza tu exploración</p>
+              <span style={{fontSize: '0.9rem', textAlign: 'center', maxWidth: '250px'}}>Descubre diseños listos para imprimir en nuestra tienda.</span>
+              <Button onClick={closeCart} variant="primary" style={{marginTop: '16px'}}>Explorar Modelos 3D</Button>
             </div>
           ) : (
             <div className={styles.itemsList}>

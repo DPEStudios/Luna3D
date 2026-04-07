@@ -1,0 +1,100 @@
+.container {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.globalRating {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.stars {
+  color: var(--color-warning);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.score {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.count {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.review {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--color-border);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.authorBadge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.authorName {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.date {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.reviewStars {
+  color: var(--color-warning);
+  letter-spacing: 1px;
+}
+
+.content {
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}

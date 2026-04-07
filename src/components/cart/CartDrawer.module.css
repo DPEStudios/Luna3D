@@ -118,6 +118,10 @@
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 170px;
 }
 
 .itemPrice {

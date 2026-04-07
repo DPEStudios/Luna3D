@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   description: "Descubre artículos de tendencia, decoración y gadgets impresos en 3D bajo un sistema de optimización radical.",
 };
 
+import { ToastContainer } from "../components/ui/Toast";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,6 +29,7 @@ export default function RootLayout({
           <Footer />
         </div>
         <CartDrawer />
+        <ToastContainer />
       </body>
     </html>
   );

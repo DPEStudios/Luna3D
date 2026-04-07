@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useCartStore } from '../../../store/cartStore';
+import { useToastStore } from '../../../store/toastStore';
 import { Product } from '../../../lib/db/productService';
 import { Button } from '../../../components/ui/Button';
 import styles from './page.module.css';
@@ -12,7 +13,8 @@ interface ProductDetailClientProps {
 
 export default function ProductDetailClient({ product }: ProductDetailClientProps) {
   const [quantity, setQuantity] = useState(1);
-  const { addItem, openCart, favorites, toggleFavorite } = useCartStore();
+  const { addItem, favorites, toggleFavorite } = useCartStore();
+  const { addToast } = useToastStore();
   
   const isFavorite = favorites?.includes(product.id) ?? false;
 
@@ -24,7 +26,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
       image: product.image,
       quantity
     });
-    openCart();
+    addToast(`Añadido: ${quantity}x ${product.name}`, 'success');
   };
 
   const handleFavoriteClick = () => {

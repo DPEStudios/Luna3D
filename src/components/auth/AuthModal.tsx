@@ -6,10 +6,11 @@ import { useAuthStore } from '../../store/authStore';
 import { Button } from '../ui/Button';
 
 export const AuthModal: React.FC = () => {
-  const { isAuthModalOpen, closeAuthModal, login } = useAuthStore();
+  const { isAuthModalOpen, closeAuthModal, signIn, signUp, isLoading, error, clearError } = useAuthStore();
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -18,20 +19,38 @@ export const AuthModal: React.FC = () => {
 
   if (!mounted || !isAuthModalOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    login(email, isLogin ? 'Usuario Clerk' : name);
+    if (isLogin) {
+      await signIn(email, password);
+    } else {
+      await signUp(email, password, name);
+    }
   };
+
+  const handleModeSwitch = () => {
+    setIsLogin(!isLogin);
+    clearError();
+  };
+
+  const handleClose = () => {
+    closeAuthModal();
+    setEmail('');
+    setPassword('');
+    setName('');
+  }
 
   return (
     <>
-      <div className={styles.overlay} onClick={closeAuthModal} />
+      <div className={styles.overlay} onClick={handleClose} />
       <div className={styles.modal}>
         <div className={styles.header}>
           <h2>{isLogin ? 'Iniciar Sesión' : 'Crear Cuenta'}</h2>
-          <button className={styles.closeBtn} onClick={closeAuthModal}>&times;</button>
+          <button className={styles.closeBtn} onClick={handleClose}>&times;</button>
         </div>
         
+        {error && <div className={styles.errorMessage}>{error}</div>}
+
         <form className={styles.form} onSubmit={handleSubmit}>
           {!isLogin && (
             <div className={styles.inputGroup}>
@@ -64,37 +83,29 @@ export const AuthModal: React.FC = () => {
             <input 
               type="password" 
               required 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
               className={styles.input}
+              minLength={6}
             />
             {isLogin && <a href="#" className={styles.forgotPass}>¿Olvidaste tu contraseña?</a>}
           </div>
 
-          <Button type="submit" variant="primary" style={{width: '100%', marginTop: '10px'}}>
-            {isLogin ? 'Ingresar' : 'Registrarme Seguramente'}
+          <Button type="submit" variant="primary" style={{width: '100%', marginTop: '10px'}} disabled={isLoading}>
+            {isLoading ? 'Cargando...' : (isLogin ? 'Ingresar' : 'Registrarme')}
           </Button>
         </form>
 
-        <div className={styles.divider}>
-          <span>o</span>
-        </div>
-
-        <Button variant="ghost" style={{width: '100%', border: '1px solid var(--color-border)'}}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" style={{marginRight: '8px'}}>
-            <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 5.08 3.8 9.27 8.7 9.9v-7H7.9V12h2.8V9.8c0-2.76 1.64-4.3 4.17-4.3 1.2 0 2.45.22 2.45.22v2.7h-1.38c-1.36 0-1.78.85-1.78 1.7V12h3l-.48 2.9h-2.52v7C18.2 21.27 22 17.08 22 12z"></path>
-          </svg>
-          Continuar con Google
-        </Button>
-
         <p className={styles.switchMode}>
           {isLogin ? '¿No tienes cuenta? ' : '¿Ya tienes cuenta? '}
-          <button type="button" onClick={() => setIsLogin(!isLogin)} className={styles.switchBtn}>
+          <button type="button" onClick={handleModeSwitch} className={styles.switchBtn}>
             {isLogin ? 'Regístrate' : 'Inicia Sesión'}
           </button>
         </p>
 
         <p className={styles.secureNotice}>
-          🔒 Protegido con estándar Clerk Auth (Mock temporal). Tus contraseñas viajan encriptadas.
+          🔒 Tus credenciales están seguras y manejadas directamente por Supabase Auth.
         </p>
       </div>
     </>

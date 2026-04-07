@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: var(--space-lg);
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.title {
+  color: var(--color-danger);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.message {
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}

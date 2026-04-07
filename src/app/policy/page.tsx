@@ -1,15 +1,33 @@
 import React from 'react';
-import Link from 'next/link';
+import styles from '../about/page.module.css'; // Reutilizamos estilos
 
 export default function PolicyPage() {
   return (
-    <div style={{minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--color-background)'}}>      <main style={{maxWidth: '800px', margin: '0 auto', padding: '120px 20px', flex: 1}}>
-        <Link href="/" style={{color: 'var(--color-primary)', textDecoration: 'none', marginBottom: '20px', display: 'inline-block'}}>&larr; Volver al inicio</Link>
-        <h1 style={{fontSize: '2.5rem', marginBottom: '20px', color: 'var(--color-text-primary)'}}>Devoluciones y Política</h1>
-        <p style={{color: 'var(--color-text-secondary)', lineHeight: 1.6, fontSize: '1rem'}}>
-          Las devoluciones o cambios se efectúan si un producto llega con daños de fabricación 3D o defectos estructurales. 
-          Garantizamos la altísima calidad (Solid/Sez) pero no aceptamos devoluciones por cambios de arrepentimiento de color si ya entró en la cola de impresión. Tu privacidad y tus datos de cuenta están doblemente encriptados y no los compartimos con terceros.
-        </p>
-      </main>    </div>
+    <main className={styles.container}>
+      <div className={styles.content}>
+        <h1 className={styles.title}>Política de Privacidad</h1>
+        
+        <section className={styles.section}>
+          <h2>1. Recopilación de Información</h2>
+          <p>
+            <strong>Luna 3D</strong> valora tu privacidad. Únicamente recopilamos los datos estrictamente necesarios para el procesamiento eficiente de tus pedidos, cotizaciones automáticas y entrega física a través de servicios courier. Esto incluye: Nombre, Correo, Teléfono, y Dirección Postal.
+          </p>
+        </section>
+
+        <section className={styles.section}>
+          <h2>2. Procesamiento de Pagos</h2>
+          <p>
+            Nuestros cobros son procesados de manera segura mediante proveedores de pago encriptados de alto estándar (ej. MercadoPago). Luna 3D no almacena los números enteros ni CVV de tus tarjetas bancarias en nuestras bases de datos en ningún momento de la transacción.
+          </p>
+        </section>
+
+        <section className={styles.section}>
+          <h2>3. Cookies de Rendimiento</h2>
+          <p>
+            Utilizamos tecnologías de almacenamiento de navegador local (como Zustand persist) para asegurar que el contenido de tu carrito permanezca a salvo si recargas la página o la cierras accidentalmente mientras evalúas una compra.
+          </p>
+        </section>
+      </div>
+    </main>
   );
 }

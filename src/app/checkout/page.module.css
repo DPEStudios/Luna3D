@@ -131,26 +131,58 @@
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px;
-  border: 1px solid var(--color-border);
+  gap: 12px;
+  padding: 16px;
+  border: 2px solid var(--color-border);
   border-radius: var(--radius-md);
   cursor: pointer;
-  font-weight: 600;
-  color: var(--color-text-secondary);
   transition: all var(--transition-short);
   background-color: var(--color-background);
+}
+
+.toggleLabel:hover {
+  border-color: var(--color-text-secondary);
+  transform: translateY(-2px);
 }
 
 .toggleLabel input {
   display: none;
 }
 
+.cardContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cardIcon {
+  font-size: 1.5rem;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cardText strong {
+  font-size: 1rem;
+  color: var(--color-text-primary);
+}
+
+.cardText span {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
 .activeDoc {
   border-color: var(--color-primary);
-  background-color: rgba(0, 122, 255, 0.1);
-  color: var(--color-primary);
+  background-color: rgba(138, 75, 255, 0.05);
+}
+
+.activeDoc:hover {
+  border-color: var(--color-primary);
 }
 
 .facturaFields {

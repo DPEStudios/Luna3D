@@ -10,18 +10,26 @@
   transition: all var(--transition-fast);
   border: none;
   outline: none;
+  gap: var(--space-sm);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 .primary {
   background-color: var(--color-primary);
-  color: var(--color-surface);
+  color: var(--text-primary, #fff); /* Fallback */
   box-shadow: var(--shadow-glow);
 }
 
-.primary:hover {
+.primary:hover:not(:disabled) {
   background-color: var(--color-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 24px rgba(18, 201, 108, 0.4);
+  box-shadow: 0 4px 24px rgba(138, 75, 255, 0.4);
 }
 
 .ghost {
@@ -29,6 +37,20 @@
   color: var(--color-text-primary);
 }
 
-.ghost:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+.ghost:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.05); /* Adaptado para dark mode */
+}
+
+/* Spinner for loading state */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }

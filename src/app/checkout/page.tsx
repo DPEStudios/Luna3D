@@ -194,11 +194,23 @@ export default function CheckoutPage() {
               <div className={styles.docTypeToggle}>
                 <label className={`${styles.toggleLabel} ${docType === 'boleta' ? styles.activeDoc : ''}`}>
                   <input type="radio" name="document" value="boleta" checked={docType === 'boleta'} onChange={() => setDocType('boleta')} />
-                  Boleta
+                  <div className={styles.cardContent}>
+                    <span className={styles.cardIcon}>📄</span>
+                    <div className={styles.cardText}>
+                      <strong>Boleta</strong>
+                      <span>Consumidor final</span>
+                    </div>
+                  </div>
                 </label>
                 <label className={`${styles.toggleLabel} ${docType === 'factura' ? styles.activeDoc : ''}`}>
                   <input type="radio" name="document" value="factura" checked={docType === 'factura'} onChange={() => setDocType('factura')} />
-                  Factura
+                  <div className={styles.cardContent}>
+                    <span className={styles.cardIcon}>🏢</span>
+                    <div className={styles.cardText}>
+                      <strong>Factura</strong>
+                      <span>A empresas</span>
+                    </div>
+                  </div>
                 </label>
               </div>
 

@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getProductById } from '../../../lib/db/productService';
+import { ProductReviews } from '../../../components/product/ProductReviews';
 import ProductDetailClient from './ProductDetailClient';
 import styles from './page.module.css';
 
@@ -106,8 +107,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <p>🔒 Pago 100% Seguro</p>
               <p>🛡️ Garantía de Calidad Estrella3D</p>
             </div>
+            
+            <ProductReviews />
           </div>
         </div>
-      </main>    </div>
+      </main>
+    </div>
   );
 }

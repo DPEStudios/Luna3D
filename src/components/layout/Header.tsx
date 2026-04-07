@@ -11,12 +11,13 @@ import { APP_VERSION } from '../../lib/changelog';
 
 export const Header: React.FC = () => {
   const { items, openCart } = useCartStore();
-  const { isAuthenticated, user, openAuthModal, logout } = useAuthStore();
+  const { isAuthenticated, user, openAuthModal, logout, initialize } = useAuthStore();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    initialize();
     setMounted(true);
-  }, []);
+  }, [initialize]);
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 

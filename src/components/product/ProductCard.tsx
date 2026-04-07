@@ -6,6 +6,7 @@ import Link from 'next/link';
 import styles from './ProductCard.module.css';
 import { Button } from '../ui/Button';
 import { useCartStore } from '../../store/cartStore';
+import { useToastStore } from '../../store/toastStore';
 
 interface ProductCardProps {
   id: string;
@@ -17,7 +18,8 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ id, name, price, category, image, isNew }) => {
-  const { addItem, openCart, favorites, toggleFavorite } = useCartStore();
+  const { addItem, favorites, toggleFavorite } = useCartStore();
+  const { addToast } = useToastStore();
   const isFavorite = favorites?.includes(id) ?? false;
 
   const formattedPrice = new Intl.NumberFormat('es-CL', {
@@ -35,7 +37,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ id, name, price, categ
       image,
       quantity: 1
     });
-    openCart();
+    addToast(`Añadido: ${name}`, 'success');
   };
 
   const handleToggleFavorite = (e: React.MouseEvent) => {
