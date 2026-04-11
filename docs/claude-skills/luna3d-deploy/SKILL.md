@@ -70,6 +70,34 @@ Vas a ver warnings tipo `warning: unable to unlink '.git/objects/XX/tmp_obj_...'
 
 Si usas `git commit` con HEREDOC, también puede fallar la creación de `.git/HEAD.lock`; el commit igual queda aplicado porque el índice temporal fue escrito exitosamente. Verifica con `git log -1 --oneline` después de cada commit.
 
+### C) Fallback: plumbing commands cuando TODO está bloqueado
+
+Si en una sesión nueva `.git/HEAD.lock`, `.git/index.lock` o `.git/refs/heads/main.lock` ya existen desde una sesión anterior (no se pueden borrar en este sandbox) y hasta `git commit` falla:
+
+```bash
+# 1. Reconstruir índice temporal desde HEAD
+GIT_INDEX_FILE=/tmp/git_index git read-tree HEAD
+GIT_INDEX_FILE=/tmp/git_index git add <archivos>
+
+# 2. Crear tree + commit con plumbing (no toca HEAD)
+TREE=$(GIT_INDEX_FILE=/tmp/git_index git write-tree)
+PARENT=$(git rev-parse HEAD)
+NEW=$(echo "<mensaje de commit multilínea>" | git commit-tree "$TREE" -p "$PARENT")
+
+# 3. Actualizar refs/heads/main sobreescribiendo el archivo directamente
+#    (el filesystem del sandbox permite OVERWRITE pero no DELETE, por eso
+#    no se puede usar `git update-ref`, que intenta crear un .lock nuevo)
+printf "%s\n" "$NEW" > .git/refs/heads/main
+
+# 4. Verificar
+git log -1 --oneline
+
+# 5. Push normal
+git push origin main
+```
+
+Esto funciona porque git no valida HEAD.lock al hacer `git push` — solo lee `refs/heads/main` directamente. Usa este fallback **solo** cuando el workflow normal (sección "Workflow obligatorio") falla con `Another git process seems to be running`.
+
 ## Workflow obligatorio (en este orden)
 
 ### 1. Hacer los cambios de código

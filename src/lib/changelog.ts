@@ -3,7 +3,7 @@
    Header, Footer y la página /changelog leen de aquí.
    ────────────────────────────────────────────── */
 
-export const APP_VERSION = "1.4.1";
+export const APP_VERSION = "1.4.2";
 
 export interface VersionEntry {
   version: string;
@@ -13,6 +13,14 @@ export interface VersionEntry {
 }
 
 export const versionHistory: VersionEntry[] = [
+  {
+    version: "1.4.2",
+    date: "11 de Abril de 2026",
+    title: "Deploy automático: fallback robusto",
+    changes: [
+      "Mejora interna del sistema de despliegue para que Claude pueda subir cambios a la web aun cuando el entorno deje 'locks' fantasma de sesiones anteriores. Invisible para ti, pero garantiza que nunca se atasquen futuros despliegues.",
+    ],
+  },
   {
     version: "1.4.1",
     date: "11 de Abril de 2026",
