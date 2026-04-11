@@ -3,7 +3,7 @@
    Header, Footer y la página /changelog leen de aquí.
    ────────────────────────────────────────────── */
 
-export const APP_VERSION = "1.3.0";
+export const APP_VERSION = "1.4.0";
 
 export interface VersionEntry {
   version: string;
@@ -13,6 +13,22 @@ export interface VersionEntry {
 }
 
 export const versionHistory: VersionEntry[] = [
+  {
+    version: "1.4.0",
+    date: "11 de Abril de 2026",
+    title: "Lunar Gray — Tema Claro + Rediseño de Home",
+    changes: [
+      "Nuevo modo claro 'Lunar Gray': gris luna suave con acentos morado/lila. Toggle sol/luna en el header que se persiste entre sesiones.",
+      "Navegación principal ampliada: Home, Categorías, Productos Destacados, Acerca de Nosotros y Contáctanos.",
+      "Botón 'Ingresar' ahora con icono de perfil al lado, más claro que se puede entrar a la cuenta.",
+      "Nueva sección de categorías en tendencia: 5 círculos bajo el hero (Halloween, Regalos, Decoración, Gadgets, Niños).",
+      "Nuevos bloques tipo revista: imagen grande + 6 imágenes chicas en grilla 3×2, una versión con la grande a la izquierda y otra a la derecha.",
+      "Nuevo banner 'Mini Hero' entre secciones para empujar el catálogo.",
+      "Nuevo carrusel de reseñas de clientes con estrellas, texto, autor y controles.",
+      "Se eliminó la sección 'Recomendados para ti' (requería cuenta iniciada).",
+      "Tokens de diseño refactorizados para soportar dark + light sin duplicar CSS.",
+    ],
+  },
   {
     version: "1.3.0",
     date: "7 de Abril de 2026",
