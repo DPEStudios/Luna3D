@@ -3,7 +3,7 @@
    Header, Footer y la página /changelog leen de aquí.
    ────────────────────────────────────────────── */
 
-export const APP_VERSION = "1.4.0";
+export const APP_VERSION = "1.4.1";
 
 export interface VersionEntry {
   version: string;
@@ -13,6 +13,14 @@ export interface VersionEntry {
 }
 
 export const versionHistory: VersionEntry[] = [
+  {
+    version: "1.4.1",
+    date: "11 de Abril de 2026",
+    title: "Deploy automático desde Claude",
+    changes: [
+      "Actualización interna de la guía de despliegue (skill luna3d-deploy) con el flujo de credenciales y el workaround del sandbox para que los próximos cambios viajen directo a Vercel sin pasos manuales.",
+    ],
+  },
   {
     version: "1.4.0",
     date: "11 de Abril de 2026",

@@ -22,6 +22,54 @@ description: "Flujo de trabajo obligatorio para la página web Luna 3D (Next.js,
 
 Si Daniel pide ver los cambios **antes** de subirlos (ej. "muéstrame el diff", "quiero revisar antes"), respétalo y espera su OK — pero la vía por defecto es commitear y pushear sin pedir permiso.
 
+## Setup del entorno sandbox (leer antes del primer push de la sesión)
+
+Este proyecto vive en un sandbox de Cowork con dos particularidades importantes:
+
+### A) Credenciales de GitHub
+
+Daniel ya configuró un Personal Access Token (scope `repo`) guardado en:
+
+```
+~/.git-credentials
+```
+
+con el formato `https://DPEStudios:<TOKEN>@github.com`, y `credential.helper = store` activado globalmente. Por tanto, un `git push origin main` debería funcionar sin preguntar nada.
+
+Si el push falla con `could not read Username for 'https://github.com'`:
+
+1. Verifica que el archivo exista: `ls -la ~/.git-credentials`
+2. Verifica que el remote sea HTTPS limpio: `git remote -v` → debe ser `https://github.com/DPEStudios/Luna3D.git` (sin token embebido).
+3. Si falta el archivo, pídele a Daniel un nuevo PAT y recréalo:
+   ```bash
+   echo "https://DPEStudios:<TOKEN>@github.com" > ~/.git-credentials
+   chmod 600 ~/.git-credentials
+   git config --global credential.helper store
+   ```
+4. **Nunca loguees el token ni lo dejes en el URL del remote.** Después de usar un token one-shot en la URL, restaura el remote limpio con `git remote set-url origin https://github.com/DPEStudios/Luna3D.git`.
+
+### B) `.git/index.lock` fantasma (filesystem read-only para `unlink`)
+
+El filesystem del sandbox deja crear archivos pero **no deja borrarlos**. Git crea `.git/index.lock` durante operaciones de escritura y, al terminar, no lo puede remover. Resultado: el siguiente `git add` falla con `fatal: Unable to create '.git/index.lock': File exists`.
+
+**Workaround estándar**: usar un índice alternativo en `/tmp` vía la variable `GIT_INDEX_FILE`:
+
+```bash
+# Al inicio de cada sesión de commit
+cp /sessions/sleepy-elegant-ride/mnt/Estrella3D/.git/index /tmp/git_index
+export GIT_INDEX_FILE=/tmp/git_index
+
+# Ahora todas las operaciones de git usan el índice temporal
+git add <archivos>
+git status -s            # debe mostrar staged + unstaged como siempre
+git commit -m "..."       # funciona, avanza HEAD normalmente
+git push origin main
+```
+
+Vas a ver warnings tipo `warning: unable to unlink '.git/objects/XX/tmp_obj_...': Operation not permitted` — **son inofensivos**, el objeto ya está escrito, git solo no puede limpiar sus tmp files. Ignóralos.
+
+Si usas `git commit` con HEREDOC, también puede fallar la creación de `.git/HEAD.lock`; el commit igual queda aplicado porque el índice temporal fue escrito exitosamente. Verifica con `git log -1 --oneline` después de cada commit.
+
 ## Workflow obligatorio (en este orden)
 
 ### 1. Hacer los cambios de código
