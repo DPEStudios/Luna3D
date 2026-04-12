@@ -1,43 +1,8 @@
 .footer {
   background-color: var(--color-surface);
-  /* La curva superior reemplaza al border-top recto */
-  border-top: none;
-  padding: 0 var(--space-lg) var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-2xl) var(--space-lg);
   margin-top: auto;
-  position: relative;
-}
-
-/* Wrap de la curva: sale del flujo del footer por arriba para
-   que la barriga del arco se "coma" el fondo de la página. */
-.curveWrap {
-  position: relative;
-  width: 100%;
-  margin-top: var(--space-2xl);
-  margin-bottom: var(--space-xl);
-  line-height: 0;
-  pointer-events: none;
-}
-
-.curve {
-  display: block;
-  width: 100%;
-  height: 120px;
-}
-
-.curvePath {
-  fill: var(--color-surface);
-  filter: drop-shadow(0 -2px 6px rgba(138, 75, 255, 0.15));
-}
-
-/* Cráteres: morado muy sutil para no competir con el contenido */
-.crater {
-  fill: var(--color-primary);
-  opacity: 0.18;
-}
-
-.craterSm {
-  fill: var(--color-accent);
-  opacity: 0.22;
 }
 
 .footerContent {

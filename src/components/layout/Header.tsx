@@ -6,19 +6,23 @@ import styles from './Header.module.css';
 import { CategoryMenu } from './CategoryMenu';
 import { useCartStore } from '../../store/cartStore';
 import { useAuthStore } from '../../store/authStore';
+import { useContactStore } from '../../store/contactStore';
 import { AuthModal } from '../auth/AuthModal';
+import { ContactModal } from '../contact/ContactModal';
 import { APP_VERSION } from '../../lib/changelog';
 import { ThemeToggle } from '../ui/ThemeToggle';
 
 /**
- * Top-level navigation links.
- * Kept as data so order/labels can change without touching JSX.
- * "Productos Destacados" se movió al menú de Categorías (primer item).
+ * Navegación dividida en dos bloques alrededor de la barra de búsqueda.
+ * LEFT_NAV queda pegado al logo (Home antes de Categorías).
+ * RIGHT_NAV queda antes del toggle de tema/login/carrito.
  */
-const NAV_LINKS: Array<{ label: string; href: string }> = [
+const LEFT_NAV: Array<{ label: string; href: string }> = [
   { label: 'Home', href: '/' },
+];
+
+const RIGHT_NAV: Array<{ label: string; href: string }> = [
   { label: 'Acerca de Nosotros', href: '/about' },
-  { label: 'Contáctanos', href: '/#contacto' },
 ];
 
 /**
@@ -37,6 +41,7 @@ const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
 export const Header: React.FC = () => {
   const { items, openCart } = useCartStore();
   const { isAuthenticated, user, openAuthModal, logout, initialize } = useAuthStore();
+  const { openContactModal } = useContactStore();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -53,9 +58,8 @@ export const Header: React.FC = () => {
           LUNA<span>3D</span>
           <span className={styles.versionBadge}>v{APP_VERSION}</span>
         </Link>
-        <CategoryMenu />
-        <nav className={styles.nav} aria-label="Navegación principal">
-          {NAV_LINKS.map((link) => (
+        <nav className={styles.nav} aria-label="Navegación izquierda">
+          {LEFT_NAV.map((link) => (
             <Link
               key={link.href + link.label}
               href={link.href}
@@ -66,6 +70,7 @@ export const Header: React.FC = () => {
             </Link>
           ))}
         </nav>
+        <CategoryMenu />
       </div>
 
       <div className={styles.centerSection}>
@@ -78,6 +83,24 @@ export const Header: React.FC = () => {
       </div>
 
       <div className={styles.rightSection}>
+        <nav className={styles.nav} aria-label="Navegación derecha">
+          {RIGHT_NAV.map((link) => (
+            <Link
+              key={link.href + link.label}
+              href={link.href}
+              className={styles.navLink}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <button
+            type="button"
+            className={styles.navLink}
+            onClick={openContactModal}
+          >
+            Contáctanos
+          </button>
+        </nav>
         <ThemeToggle />
 
         {mounted && isAuthenticated ? (
@@ -105,6 +128,7 @@ export const Header: React.FC = () => {
         </button>
       </div>
       <AuthModal />
+      <ContactModal />
     </header>
   );
 };

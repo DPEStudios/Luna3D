@@ -72,12 +72,12 @@
   align-self: center;
 }
 
-/* Primary nav (Home / Destacados / Nosotros / Contacto) */
+/* Bloques de navegación: uno a la izquierda del logo (Home) y
+   otro a la derecha del search (Acerca / Contáctanos). */
 .nav {
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  margin-left: var(--space-sm);
 }
 
 .navLink {
@@ -88,6 +88,12 @@
   border-radius: var(--radius-sm);
   transition: color var(--transition-fast), background var(--transition-fast);
   white-space: nowrap;
+  /* Reset para cuando se usa como <button> */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
 }
 
 .navLink:hover {

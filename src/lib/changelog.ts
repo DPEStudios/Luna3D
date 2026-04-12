@@ -3,7 +3,7 @@
    Header, Footer y la página /changelog leen de aquí.
    ────────────────────────────────────────────── */
 
-export const APP_VERSION = "1.5.0";
+export const APP_VERSION = "1.5.1";
 
 export interface VersionEntry {
   version: string;
@@ -13,6 +13,17 @@ export interface VersionEntry {
 }
 
 export const versionHistory: VersionEntry[] = [
+  {
+    version: "1.5.1",
+    date: "12 de Abril de 2026",
+    title: "Contáctanos ahora es modal: formulario + datos de contacto desde el header",
+    changes: [
+      "El botón 'Contáctanos' del header ahora abre un modal con formulario de contacto, email, teléfono, dirección y horario de atención.",
+      "Se eliminó el formulario de contacto roto del footer, dejándolo más limpio.",
+      "Nuevo componente ContactModal con store Zustand dedicado (contactStore).",
+      "El enlace de navegación 'Contáctanos' se convirtió en botón con estilo idéntico al navLink.",
+    ],
+  },
   {
     version: "1.5.0",
     date: "11 de Abril de 2026",

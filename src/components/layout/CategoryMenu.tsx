@@ -5,11 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './CategoryMenu.module.css';
 
-// Inventario simulado ampliado.
-// "Productos Destacados" va primero: es la selección curada editorial
-// que también se muestra en la home (sección "Modelos Destacados").
+// Inventario simulado ampliado
 const catalogData = [
-  { name: "Productos Destacados", subcategories: ["Más vendidos", "Nuevos lanzamientos", "Edición limitada", "Favoritos del staff"] },
   { name: "Decoración Hogar", subcategories: ["Lámparas", "Maceteros", "Esculturas", "Organizadores", "Cuadros 3D", "Jarrones", "Relojes de Pared", "Posavasos"] },
   { name: "Herramientas y Técnicos", subcategories: ["Soportes e Instalaciones", "Tuercas y Engranajes", "Cajas de Herramientas", "Repuestos Específicos", "Medidores", "Tornillos Plásticos", "Adaptadores"] },
   { name: "Regalos para Niños", subcategories: ["Juguetes Articulados", "Figuras de Acción", "Puzzles 3D", "Dinosaurios", "Autitos", "Bloques de Construcción", "Trompos", "Máscaras"] },

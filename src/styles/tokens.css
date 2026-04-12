@@ -1,33 +1,20 @@
 /* src/styles/tokens.css */
-/* ============================================================
-   LUNA 3D — Design Tokens
-   Default: Dark (Twilight Night)
-   Alternate: Light (Lunar Gray) via [data-theme="light"]
-   ============================================================ */
 :root {
   /* Brand Colors - LUNA 3D Vibe */
-  --color-primary: #8A4BFF;
+  --color-primary: #8A4BFF; /* Morado vibrante (LUNA) */
   --color-primary-hover: #7339E5;
-  --color-accent: #E08DF8;
+  --color-accent: #E08DF8; /* Rosado pastel/Lila (3D) */
   --color-accent-hover: #CF7CE8;
-
-  /* Twilight Night Palette (DARK - default) */
-  --color-background: #191424;
-  --color-surface: #241D35;
-  --color-surface-alt: #2C2440;
-  --color-text-primary: #F4EFFF;
-  --color-text-secondary: #ADA5C1;
-
+  
+  /* Twillight Night Palette */
+  --color-background: #191424; /* Crepúsculo profundo, no negro puro */
+  --color-surface: #241D35; /* Superficies ligeramente elevadas */
+  --color-text-primary: #F4EFFF; /* Blanco violeta */
+  --color-text-secondary: #ADA5C1; /* Gris violeta para textos secundarios */
+  
   /* Borders */
   --color-border: #3C3155;
   --color-border-hover: #504172;
-
-  /* Header */
-  --color-header-bg: rgba(36, 29, 53, 0.85);
-
-  /* Overlay gradients */
-  --color-hero-overlay-start: rgba(25, 20, 36, 0.4);
-  --color-hero-overlay-end: rgba(25, 20, 36, 1);
 
   /* Spacing */
   --space-xs: 4px;
@@ -46,7 +33,6 @@
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-short: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* State Colors */
   --color-danger: #EF4444;
@@ -56,38 +42,17 @@
   --color-warning: #F59E0B;
   --color-warning-muted: #fcd34d;
 
-  /* Elevation/Shadows */
+  /* Elevation/Shadows (Dark Mode Adjusted) */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.4), 0 2px 6px -2px rgba(0, 0, 0, 0.4);
   --shadow-glow: 0 0 20px rgba(138, 75, 255, 0.25);
 
-  /* Responsive Breakpoints */
+  /* Transitions (alias faltante) */
+  --transition-short: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Responsive Breakpoints (solo referencia, usarlos en media queries) */
   --bp-mobile: 640px;
   --bp-tablet: 768px;
   --bp-desktop: 1024px;
   --bp-wide: 1280px;
-}
-
-/* ============================================================
-   LIGHT THEME — "Lunar Gray"
-   Soft moon-gray palette, keeps purple/lila brand accents.
-   ============================================================ */
-[data-theme="light"] {
-  --color-background: #F2F0F7;      /* Lunar gray, soft violet tint */
-  --color-surface: #FFFFFF;          /* Cards / elevated surfaces */
-  --color-surface-alt: #E8E4F1;      /* Subtle alt surface */
-  --color-text-primary: #1F1A2C;     /* Deep twilight ink */
-  --color-text-secondary: #6B6480;   /* Muted violet-gray */
-
-  --color-border: #DED8EC;
-  --color-border-hover: #C6BEDC;
-
-  --color-header-bg: rgba(255, 255, 255, 0.85);
-
-  --color-hero-overlay-start: rgba(242, 240, 247, 0.2);
-  --color-hero-overlay-end: rgba(242, 240, 247, 0.95);
-
-  --shadow-sm: 0 1px 2px 0 rgba(31, 26, 44, 0.08);
-  --shadow-md: 0 4px 12px -1px rgba(31, 26, 44, 0.12), 0 2px 6px -2px rgba(31, 26, 44, 0.08);
-  --shadow-glow: 0 0 20px rgba(138, 75, 255, 0.18);
 }
