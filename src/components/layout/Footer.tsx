@@ -45,6 +45,32 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className={styles.footer}>
+      {/* Curva superior tipo "borde de luna". El path dibuja un
+          arco que sube en el centro, imitando el perfil curvo
+          de la luna. Los círculos son cráteres decorativos.
+          aria-hidden porque es puramente visual. */}
+      <div className={styles.curveWrap} aria-hidden="true">
+        <svg
+          className={styles.curve}
+          viewBox="0 0 1440 160"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,160 C320,20 1120,20 1440,160 L1440,160 L0,160 Z"
+            className={styles.curvePath}
+          />
+          {/* Cráteres decorativos — solo visibles cuando el path
+              los cubre. Son elipses con leve sombra interna. */}
+          <circle cx="260"  cy="120" r="10" className={styles.crater} />
+          <circle cx="420"  cy="90"  r="6"  className={styles.craterSm} />
+          <circle cx="700"  cy="72"  r="14" className={styles.crater} />
+          <circle cx="900"  cy="88"  r="7"  className={styles.craterSm} />
+          <circle cx="1080" cy="110" r="11" className={styles.crater} />
+          <circle cx="1220" cy="135" r="5"  className={styles.craterSm} />
+        </svg>
+      </div>
+
       <div className={styles.footerContent}>
         
         {/* Branding & Info */}

@@ -1,8 +1,9 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
+  gap: var(--space-md);
   width: 100%;
+  align-items: stretch; /* big tile estira para matchear smallGrid */
 }
 
 /* When big tile is on the right, flip the column order */
@@ -13,13 +14,14 @@
   order: 1;
 }
 
-/* The big tile fills one side of the row */
+/* The big tile estira a la altura del smallGrid vecino.
+   Dejamos que sea el smallGrid (3×2 de cuadrados) quien
+   dicte la altura, para que todo calce simétricamente. */
 .bigTile {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  min-height: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100%;
   box-shadow: var(--shadow-md);
 }
 
@@ -78,12 +80,13 @@
   transform: translateY(-2px);
 }
 
-/* 3 cols × 2 rows of small tiles */
+/* 3 cols × 2 rows of small tiles — gap reducido para que las 2 filas
+   queden más juntas y el conjunto se vea compacto y simétrico. */
 .smallGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: var(--space-md);
+  gap: var(--space-xs);
 }
 
 .smallTile {

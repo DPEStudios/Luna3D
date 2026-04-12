@@ -3,7 +3,7 @@
    Header, Footer y la página /changelog leen de aquí.
    ────────────────────────────────────────────── */
 
-export const APP_VERSION = "1.4.2";
+export const APP_VERSION = "1.5.0";
 
 export interface VersionEntry {
   version: string;
@@ -13,6 +13,20 @@ export interface VersionEntry {
 }
 
 export const versionHistory: VersionEntry[] = [
+  {
+    version: "1.5.0",
+    date: "11 de Abril de 2026",
+    title: "Home pulido: búsqueda centrada, grids simétricos, reseñas y footer lunar",
+    changes: [
+      "Barra de búsqueda ahora queda SIEMPRE al centro del header (header pasó a grid de 3 columnas).",
+      "Menú principal simplificado: Home, Acerca de Nosotros, Contáctanos. 'Productos Destacados' se movió al tope del menú Categorías.",
+      "Botón 'Home' ahora funciona aunque ya estés en la raíz: hace smooth scroll al inicio de la página.",
+      "Bloques tipo revista (imagen grande + 6 chicas) ahora son simétricos: el grande calza exacto con la altura de las 6 chicas, y las 2 filas están más juntas.",
+      "El segundo bloque grid ahora usa el mismo layout del primero (imagen grande a la izquierda), para un ritmo visual consistente.",
+      "Carrusel de reseñas rediseñado: 12 reseñas totales, 4 visibles a la vez, con flechas y dots de navegación.",
+      "Nuevo footer con borde superior CURVO tipo luna, con cráteres decorativos en morado/lila.",
+    ],
+  },
   {
     version: "1.4.2",
     date: "11 de Abril de 2026",

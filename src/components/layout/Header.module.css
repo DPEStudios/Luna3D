@@ -9,24 +9,37 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
-  display: flex;
-  justify-content: space-between;
+  /* Grid de 3 columnas: left | center | right con pesos iguales
+     garantiza que la barra de búsqueda quede SIEMPRE centrada
+     al viewport, sin importar el ancho de left/right. */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: var(--space-lg);
 }
 
-.leftSection, .rightSection {
+.leftSection {
   display: flex;
   align-items: center;
   gap: var(--space-md);
   flex-shrink: 0;
+  justify-self: start;
+  min-width: 0;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-shrink: 0;
+  justify-self: end;
 }
 
 .centerSection {
-  flex-grow: 1;
   display: flex;
   justify-content: center;
-  max-width: 520px;
+  width: min(520px, 100%);
+  justify-self: center;
 }
 
 .logo {

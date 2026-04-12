@@ -74,9 +74,10 @@ export default async function Home() {
           <ProductCarousel products={newArrivals.length > 0 ? newArrivals : featured} />
         </section>
 
-        {/* Featured Grid – big image RIGHT + 6 small LEFT */}
+        {/* Featured Grid – mismo layout del primero (big LEFT + 6 RIGHT)
+            para mantener ritmo visual simétrico entre ambos bloques. */}
         <FeaturedGrid
-          bigSide="right"
+          bigSide="left"
           heading="Lo más pedido"
           ctaLabel="Ver catálogo"
           ctaHref="/#"

@@ -13,13 +13,26 @@ import { ThemeToggle } from '../ui/ThemeToggle';
 /**
  * Top-level navigation links.
  * Kept as data so order/labels can change without touching JSX.
+ * "Productos Destacados" se movió al menú de Categorías (primer item).
  */
 const NAV_LINKS: Array<{ label: string; href: string }> = [
   { label: 'Home', href: '/' },
-  { label: 'Productos Destacados', href: '/#modelos-destacados' },
   { label: 'Acerca de Nosotros', href: '/about' },
   { label: 'Contáctanos', href: '/#contacto' },
 ];
+
+/**
+ * Handler para el link "Home":
+ * si ya estamos en la raíz, hacer smooth scroll al top (porque
+ * un Link a la misma ruta en Next.js no refresca ni se desplaza).
+ */
+const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  if (typeof window === 'undefined') return;
+  if (window.location.pathname === '/') {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+};
 
 export const Header: React.FC = () => {
   const { items, openCart } = useCartStore();
@@ -43,7 +56,12 @@ export const Header: React.FC = () => {
         <CategoryMenu />
         <nav className={styles.nav} aria-label="Navegación principal">
           {NAV_LINKS.map((link) => (
-            <Link key={link.href + link.label} href={link.href} className={styles.navLink}>
+            <Link
+              key={link.href + link.label}
+              href={link.href}
+              className={styles.navLink}
+              onClick={link.label === 'Home' ? handleHomeClick : undefined}
+            >
               {link.label}
             </Link>
           ))}
