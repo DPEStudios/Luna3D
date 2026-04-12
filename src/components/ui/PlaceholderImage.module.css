@@ -1,0 +1,55 @@
+.placeholder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      var(--color-surface) 0px,
+      var(--color-surface) 10px,
+      var(--color-surface-alt) 10px,
+      var(--color-surface-alt) 20px
+    );
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  overflow: hidden;
+}
+
+.aspect_square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect_wide {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect_tall {
+  aspect-ratio: 3 / 4;
+}
+
+.aspect_auto {
+  aspect-ratio: auto;
+}
+
+.circle {
+  border-radius: var(--radius-full);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm);
+  text-align: center;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
