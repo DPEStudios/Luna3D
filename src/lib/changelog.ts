@@ -3,7 +3,7 @@
    Header, Footer y la página /changelog leen de aquí.
    ────────────────────────────────────────────── */
 
-export const APP_VERSION = "1.5.1";
+export const APP_VERSION = "1.6.0";
 
 export interface VersionEntry {
   version: string;
@@ -13,6 +13,20 @@ export interface VersionEntry {
 }
 
 export const versionHistory: VersionEntry[] = [
+  {
+    version: "1.6.0",
+    date: "16 de Abril de 2026",
+    title: "Nueva identidad visual: logo oficial Luna 3D + paleta Midnight Moon",
+    changes: [
+      "Header y footer ahora muestran el logo oficial de Luna 3D (isotipo de luna creciente con gradiente + wordmark 'Luna 3D').",
+      "Nueva paleta de marca extraída directamente del logo: fondo azul marino profundo (Midnight #001030) + gradiente fucsia → violeta → índigo para acentos y CTAs.",
+      "Favicon oficial instalado: la pestaña del navegador ahora muestra la luna de Luna 3D en todos los tamaños (16px hasta iOS 180px y PWA 512px).",
+      "Web manifest actualizado con el nombre, colores y descripción reales de Luna 3D (antes decía 'MyWebSite').",
+      "El '3D' del hero y del wordmark ahora usa el gradiente de marca para eco visual con el logo.",
+      "Hero overlay, text-shadows y colores hardcodeados migrados a tokens de diseño (cumple PRIME DIRECTIVE: cero magic numbers).",
+      "Tokens de diseño ampliados: --gradient-brand, --gradient-moon, --shadow-glow-brand-sm, --shadow-glow-accent para uso consistente en toda la UI.",
+    ],
+  },
   {
     version: "1.5.1",
     date: "12 de Abril de 2026",

@@ -43,20 +43,40 @@
 }
 
 .logo {
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  color: var(--color-primary);
   display: flex;
   align-items: center;
+  gap: var(--space-sm);
   margin-right: var(--space-sm);
-  text-shadow: 0 0 10px rgba(138, 75, 255, 0.4);
+  text-decoration: none;
 }
 
-.logo span {
-  color: var(--color-accent);
-  margin-left: 2px;
-  text-shadow: 0 0 10px rgba(224, 141, 248, 0.4);
+/* Isotipo (luna) — imagen bitmap optimizada por Next/Image */
+.logoMark {
+  height: 36px;
+  width: 36px;
+  object-fit: contain;
+  filter: drop-shadow(var(--shadow-glow-brand-sm));
+}
+
+/* Wordmark "Luna 3D" — texto estilizado con gradiente de marca */
+.logoWordmark {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  line-height: 1;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.logoWordmarkAccent {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: 900;
 }
 
 .versionBadge {

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './Header.module.css';
 import { CategoryMenu } from './CategoryMenu';
 import { useCartStore } from '../../store/cartStore';
@@ -54,8 +55,18 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.leftSection}>
-        <Link href="/" className={styles.logo}>
-          LUNA<span>3D</span>
+        <Link href="/" className={styles.logo} aria-label="Luna 3D — Ir al inicio">
+          <Image
+            src="/brand/luna3d_isotipo.png"
+            alt=""
+            width={36}
+            height={36}
+            className={styles.logoMark}
+            priority
+          />
+          <span className={styles.logoWordmark}>
+            Luna<span className={styles.logoWordmarkAccent}>3D</span>
+          </span>
           <span className={styles.versionBadge}>v{APP_VERSION}</span>
         </Link>
         <nav className={styles.nav} aria-label="Navegación izquierda">

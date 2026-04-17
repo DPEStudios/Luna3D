@@ -1,93 +1,114 @@
 /* src/styles/tokens.css */
 /* ============================================================
    LUNA 3D — Design Tokens
-   Default: Dark (Twilight Night)
-   Alternate: Light (Lunar Gray) via [data-theme="light"]
+   Paleta extraída del logo oficial:
+     • Azul marino profundo (midnight) como fondo de marca
+     • Gradiente luna: fucsia → violeta → índigo
+   Default: Dark (Midnight Moon)
+   Alternate: Light (Lunar Mist) via [data-theme="light"]
    ============================================================ */
 :root {
-  /* Brand Colors - LUNA 3D Vibe */
-  --color-primary: #8A4BFF;
-  --color-primary-hover: #7339E5;
-  --color-accent: #E08DF8;
-  --color-accent-hover: #CF7CE8;
+  /* ----------------------------------------------------------
+     Brand Colors — Paleta base del logo Luna 3D
+     ---------------------------------------------------------- */
+  --color-brand-deep:      #001030;   /* Midnight — fondo azul marino del logo */
+  --color-brand-deep-alt:  #0A1B3D;   /* Variación ligera para elevación */
+  --color-primary:         #8A4BFF;   /* Violeta principal (stop medio del gradiente) */
+  --color-primary-hover:   #7339E5;
+  --color-accent:          #C040E0;   /* Fucsia del logo (stop claro del gradiente) */
+  --color-accent-hover:    #B030D0;
+  --color-accent-deep:     #5030B0;   /* Índigo del logo (stop oscuro del gradiente) */
 
-  /* Twilight Night Palette (DARK - default) */
-  --color-background: #191424;
-  --color-surface: #241D35;
-  --color-surface-alt: #2C2440;
-  --color-text-primary: #F4EFFF;
-  --color-text-secondary: #ADA5C1;
+  /* Gradientes de marca — úsalos para CTAs, highlights y decoración */
+  --gradient-brand:        linear-gradient(135deg, #C040E0 0%, #8A4BFF 50%, #5030B0 100%);
+  --gradient-moon:         linear-gradient(180deg, #D04FF0 0%, #8A4BFF 60%, #4B2496 100%);
+  --gradient-hero-overlay: linear-gradient(180deg, rgba(0, 16, 48, 0.4) 0%, rgba(0, 16, 48, 1) 100%);
+
+  /* ----------------------------------------------------------
+     Dark Theme (default) — "Midnight Moon"
+     ---------------------------------------------------------- */
+  --color-background:      #001030;   /* Fondo principal = midnight del logo */
+  --color-surface:         #0A1B3D;   /* Cards / elevated */
+  --color-surface-alt:     #142450;   /* Subtle alt surface */
+  --color-text-primary:    #F4EFFF;
+  --color-text-secondary:  #A9B0D0;   /* Azul-lila muted */
 
   /* Borders */
-  --color-border: #3C3155;
-  --color-border-hover: #504172;
+  --color-border:          #1E2E5E;
+  --color-border-hover:    #304878;
 
   /* Header */
-  --color-header-bg: rgba(36, 29, 53, 0.85);
+  --color-header-bg:       rgba(10, 27, 61, 0.85);
 
-  /* Overlay gradients */
-  --color-hero-overlay-start: rgba(25, 20, 36, 0.4);
-  --color-hero-overlay-end: rgba(25, 20, 36, 1);
+  /* Overlay gradients (legacy — preferir --gradient-hero-overlay) */
+  --color-hero-overlay-start: rgba(0, 16, 48, 0.4);
+  --color-hero-overlay-end:   rgba(0, 16, 48, 1);
 
   /* Spacing */
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
   --space-2xl: 48px;
 
   /* Radius */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
   --radius-full: 9999px;
 
   /* Transitions */
-  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast:   0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-short: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-short:  0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* State Colors */
-  --color-danger: #EF4444;
-  --color-danger-muted: #fca5a5;
-  --color-success: #22C55E;
-  --color-success-muted: #86efac;
-  --color-warning: #F59E0B;
-  --color-warning-muted: #fcd34d;
+  --color-danger:         #EF4444;
+  --color-danger-muted:   #fca5a5;
+  --color-success:        #22C55E;
+  --color-success-muted:  #86efac;
+  --color-warning:        #F59E0B;
+  --color-warning-muted:  #fcd34d;
 
-  /* Elevation/Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.4), 0 2px 6px -2px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 20px rgba(138, 75, 255, 0.25);
+  /* Elevation / Shadows */
+  --shadow-sm:         0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md:         0 4px 12px -1px rgba(0, 0, 0, 0.4), 0 2px 6px -2px rgba(0, 0, 0, 0.4);
+  --shadow-glow:       0 0 20px rgba(138, 75, 255, 0.25);
+  --shadow-glow-brand-sm: 0 0 10px rgba(138, 75, 255, 0.4);
+  --shadow-glow-accent:   0 0 20px rgba(192, 64, 224, 0.5);
 
   /* Responsive Breakpoints */
-  --bp-mobile: 640px;
-  --bp-tablet: 768px;
+  --bp-mobile:  640px;
+  --bp-tablet:  768px;
   --bp-desktop: 1024px;
-  --bp-wide: 1280px;
+  --bp-wide:    1280px;
 }
 
 /* ============================================================
-   LIGHT THEME — "Lunar Gray"
-   Soft moon-gray palette, keeps purple/lila brand accents.
+   LIGHT THEME — "Lunar Mist"
+   Fondo neutro claro, mantiene el violeta/fucsia como acento.
    ============================================================ */
 [data-theme="light"] {
-  --color-background: #F2F0F7;      /* Lunar gray, soft violet tint */
-  --color-surface: #FFFFFF;          /* Cards / elevated surfaces */
-  --color-surface-alt: #E8E4F1;      /* Subtle alt surface */
-  --color-text-primary: #1F1A2C;     /* Deep twilight ink */
-  --color-text-secondary: #6B6480;   /* Muted violet-gray */
+  --color-background:     #F2F0F7;
+  --color-surface:        #FFFFFF;
+  --color-surface-alt:    #E8E4F1;
+  --color-text-primary:   #0A1B3D;   /* Texto = azul marino del logo */
+  --color-text-secondary: #4A5578;
 
-  --color-border: #DED8EC;
-  --color-border-hover: #C6BEDC;
+  --color-border:         #DED8EC;
+  --color-border-hover:   #C6BEDC;
 
-  --color-header-bg: rgba(255, 255, 255, 0.85);
+  --color-header-bg:      rgba(255, 255, 255, 0.85);
 
   --color-hero-overlay-start: rgba(242, 240, 247, 0.2);
-  --color-hero-overlay-end: rgba(242, 240, 247, 0.95);
+  --color-hero-overlay-end:   rgba(242, 240, 247, 0.95);
 
-  --shadow-sm: 0 1px 2px 0 rgba(31, 26, 44, 0.08);
-  --shadow-md: 0 4px 12px -1px rgba(31, 26, 44, 0.12), 0 2px 6px -2px rgba(31, 26, 44, 0.08);
+  --gradient-hero-overlay: linear-gradient(180deg, rgba(242, 240, 247, 0.2) 0%, rgba(242, 240, 247, 0.95) 100%);
+
+  --shadow-sm: 0 1px 2px 0 rgba(10, 27, 61, 0.08);
+  --shadow-md: 0 4px 12px -1px rgba(10, 27, 61, 0.12), 0 2px 6px -2px rgba(10, 27, 61, 0.08);
   --shadow-glow: 0 0 20px rgba(138, 75, 255, 0.18);
+  --shadow-glow-brand-sm: 0 0 10px rgba(138, 75, 255, 0.25);
+  --shadow-glow-accent:   0 0 20px rgba(192, 64, 224, 0.3);
 }

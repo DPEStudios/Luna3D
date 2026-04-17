@@ -11,6 +11,17 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Luna 3D | Impresión 3D Inteligente",
   description: "Descubre artículos de tendencia, decoración y gadgets impresos en 3D bajo un sistema de optimización radical.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180" },
+    ],
+  },
+  manifest: "/site.webmanifest",
 };
 
 import { ToastContainer } from "../components/ui/Toast";

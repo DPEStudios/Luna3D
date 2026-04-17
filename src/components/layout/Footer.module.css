@@ -54,17 +54,38 @@
   gap: var(--space-sm);
 }
 
+/* Logo del footer — isotipo + wordmark alineados */
 .logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  color: var(--color-primary);
-  text-shadow: 0 0 10px rgba(138, 75, 255, 0.4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
-.logo span {
-  color: var(--color-accent);
-  text-shadow: 0 0 10px rgba(224, 141, 248, 0.4);
+.logoMark {
+  height: 48px;
+  width: 48px;
+  object-fit: contain;
+  filter: drop-shadow(var(--shadow-glow-brand-sm));
+}
+
+.logoWordmark {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  line-height: 1;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.logoWordmarkAccent {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: 900;
 }
 
 .description {
