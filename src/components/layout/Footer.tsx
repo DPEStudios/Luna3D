@@ -2,9 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { APP_VERSION } from '../../lib/changelog';
 import styles from './Footer.module.css';
+import { Logo } from '../ui/Logo';
 
 /**
  * Footer — solo branding + enlaces + datos de ubicación.
@@ -46,16 +46,7 @@ export const Footer: React.FC = () => {
         {/* Branding & Info */}
         <div className={styles.brand}>
           <div className={styles.logo}>
-            <Image
-              src="/brand/luna3d_isotipo.png"
-              alt=""
-              width={48}
-              height={48}
-              className={styles.logoMark}
-            />
-            <span className={styles.logoWordmark}>
-              Luna<span className={styles.logoWordmarkAccent}>3D</span>
-            </span>
+            <Logo variant="compact" />
           </div>
           <p className={styles.description}>
             La revolución de la impresión 3D mediante optimización radical de modelos y un ecosistema completamente autónomo.

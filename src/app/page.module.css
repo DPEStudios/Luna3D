@@ -65,6 +65,18 @@
   text-shadow: var(--shadow-md);
 }
 
+/* Tagline bajo el logo del hero — más contenido que el .title antiguo
+   porque ahora el logo ya carga el peso visual. */
+.tagline {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  text-shadow: var(--shadow-md);
+  margin-top: var(--space-sm);
+}
+
 /* El "3D" del hero usa el gradiente de marca para eco visual con el logo. */
 .title span {
   background: var(--gradient-brand);

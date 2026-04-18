@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from './Header.module.css';
 import { CategoryMenu } from './CategoryMenu';
 import { useCartStore } from '../../store/cartStore';
@@ -12,6 +11,7 @@ import { AuthModal } from '../auth/AuthModal';
 import { ContactModal } from '../contact/ContactModal';
 import { APP_VERSION } from '../../lib/changelog';
 import { ThemeToggle } from '../ui/ThemeToggle';
+import { Logo } from '../ui/Logo';
 
 /**
  * Navegación dividida en dos bloques alrededor de la barra de búsqueda.
@@ -55,20 +55,7 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.leftSection}>
-        <Link href="/" className={styles.logo} aria-label="Luna 3D — Ir al inicio">
-          <Image
-            src="/brand/luna3d_isotipo.png"
-            alt=""
-            width={36}
-            height={36}
-            className={styles.logoMark}
-            priority
-          />
-          <span className={styles.logoWordmark}>
-            Luna<span className={styles.logoWordmarkAccent}>3D</span>
-          </span>
-          <span className={styles.versionBadge}>v{APP_VERSION}</span>
-        </Link>
+        <Logo variant="compact" priority />
         <nav className={styles.nav} aria-label="Navegación izquierda">
           {LEFT_NAV.map((link) => (
             <Link
@@ -112,6 +99,9 @@ export const Header: React.FC = () => {
             Contáctanos
           </button>
         </nav>
+        <span className={styles.versionBadge} aria-label={`Versión ${APP_VERSION}`}>
+          v{APP_VERSION}
+        </span>
         <ThemeToggle />
 
         {mounted && isAuthenticated ? (

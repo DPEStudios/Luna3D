@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import { ProductCarousel } from "../components/product/ProductCarousel";
 import { getFeaturedProducts, getNewProducts } from "../lib/db/productService";
 import { Button } from "../components/ui/Button";
+import { Logo } from "../components/ui/Logo";
 import { TrendingCategories } from "../components/home/TrendingCategories";
 import { FeaturedGrid } from "../components/home/FeaturedGrid";
 import { MiniHero } from "../components/home/MiniHero";
@@ -31,9 +32,8 @@ export default async function Home() {
         <div className={styles.heroOverlay} />
 
         <div className={styles.heroContent}>
-          <h1 className={styles.title}>
-            LUNA <span>3D</span> <br /> Tu Idea Hecha Realidad
-          </h1>
+          <Logo variant="hero" asLink={false} priority />
+          <h1 className={styles.tagline}>Tu Idea Hecha Realidad</h1>
           <p className={styles.subtitle}>
             Fabricación de piezas hiper-optimizadas. Descubre nuestros diseños en tendencia
             con calidad crepuscular y alta ingeniería.

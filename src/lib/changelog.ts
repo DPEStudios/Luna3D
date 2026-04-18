@@ -3,7 +3,7 @@
    Header, Footer y la página /changelog leen de aquí.
    ────────────────────────────────────────────── */
 
-export const APP_VERSION = "1.6.0";
+export const APP_VERSION = "1.6.1";
 
 export interface VersionEntry {
   version: string;
@@ -13,6 +13,19 @@ export interface VersionEntry {
 }
 
 export const versionHistory: VersionEntry[] = [
+  {
+    version: "1.6.1",
+    date: "18 de Abril de 2026",
+    title: "Logo oficial centralizado: header, hero y footer unificados",
+    changes: [
+      "Nuevo componente reutilizable <Logo /> en src/components/ui/Logo.tsx con variantes 'compact' (header/footer) y 'hero' (home). Fuente única de verdad para la marca.",
+      "Header: se eliminó el isotipo cuadrado + el wordmark tipográfico 'Luna3D'. Ahora muestra el logo oficial completo (luna3d_logo_transparente.png) en la esquina superior izquierda.",
+      "Hero del home: se eliminó el título tipográfico 'LUNA 3D Tu Idea Hecha Realidad'. Ahora aparece el logo oficial en grande + un tagline discreto debajo.",
+      "Footer: se eliminó el isotipo + wordmark tipográfico. Ahora muestra el logo oficial unificado.",
+      "Favicon arreglado: el src/app/favicon.ico de Next.js venía con el ícono del template (tipo Vercel) y sobrescribía por convención el metadata del layout. Se reemplazó por el favicon real de /public/.",
+      "Version badge 'vX.Y.Z' movido al extremo derecho del header (al lado del ThemeToggle), liberando la esquina izquierda para que el logo tenga protagonismo total.",
+    ],
+  },
   {
     version: "1.6.0",
     date: "16 de Abril de 2026",
